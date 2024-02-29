@@ -1,0 +1,164 @@
+{
+	"id": "c5e336ad-ff1a-4fb7-bfdf-cfa73cb6689e",
+	"name": "Tests",
+	"timestamp": "2024-02-29T05:46:19.137Z",
+	"collection_id": "11123681-4f4f98c9-adfa-4b7c-ac41-06994a38dcbf",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 5,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-02-29T05:46:16.963Z",
+	"totalFail": 2,
+	"results": [
+		{
+			"id": "e9465770-e4ed-4dd6-9ebe-02c84a93296a",
+			"name": "Positive",
+			"url": "https://reqres.in/api/users",
+			"time": 460,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response body contains 'name' and 'job' fields with expected values": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response body contains 'name' and 'job' fields with expected values": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				460
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response body contains 'name' and 'job' fields with expected values": true
+				}
+			]
+		},
+		{
+			"id": "8e7e9f3e-09cd-480c-a73e-f8a845fa81a5",
+			"name": "Negative Missing Request Body Fields",
+			"url": "https://reqres.in/api/users",
+			"time": 393,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Missing Request Body Fields": true,
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Missing Request Body Fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				393
+			],
+			"allTests": [
+				{
+					"Missing Request Body Fields": true,
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "dfd808a5-646e-43c1-b478-5684f8f02255",
+			"name": "Negative Missing Response",
+			"url": "https://reqres.in/api/users",
+			"time": 465,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Missing Response": false
+			},
+			"testPassFailCounts": {
+				"Missing Response": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				465
+			],
+			"allTests": [
+				{
+					"Missing Response": false
+				}
+			]
+		},
+		{
+			"id": "f74c6936-cb79-4660-93d1-13603ad1f58a",
+			"name": "Negative Response Not Equals with Request",
+			"url": "https://reqres.in/api/users",
+			"time": 489,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response Not Equals with Request": false
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response Not Equals with Request": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				489
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response Not Equals with Request": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1807,
+	"collection": {
+		"requests": [
+			{
+				"id": "e9465770-e4ed-4dd6-9ebe-02c84a93296a",
+				"method": "POST"
+			},
+			{
+				"id": "8e7e9f3e-09cd-480c-a73e-f8a845fa81a5",
+				"method": "POST"
+			},
+			{
+				"id": "dfd808a5-646e-43c1-b478-5684f8f02255",
+				"method": "POST"
+			},
+			{
+				"id": "f74c6936-cb79-4660-93d1-13603ad1f58a",
+				"method": "POST"
+			}
+		]
+	}
+}

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.9.6 on darwin)" generated="2024-02-29T13:25:03.119856" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="/Users/agung/Career/Parkee/Assignment/pythonProject/Assignment/Robot/Tests.robot">
+<test id="s1-t1" name="Positive Case" line="10">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-02-29T13:25:03.795407" level="INFO">POST Request : url=https://reqres.in/api/users/ 
+ path_url=/api/users/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '37', 'Content-Type': 'application/json'} 
+ body=b'{"name": "morpheus", "job": "leader"}' 
+ </msg>
+<msg time="2024-02-29T13:25:03.795731" level="INFO">POST Response : url=https://reqres.in/api/users/ 
+ status=201, reason=Created 
+ headers={'Date': 'Thu, 29 Feb 2024 06:25:03 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1709187903&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=0owtILM43DkzQGeE2Qz9DrhqTSHZSXtlLjcwpB7dLdw%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1709187903&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=0owtILM43DkzQGeE2Qz9DrhqTSHZSXtlLjcwpB7dLdw%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"54-z8Jtr3Iy5JwoVwiU/tfFuqcfIzg"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '85ced3ecaf5f563a-SIN'} 
+ body={"name":"morpheus","job":"leader","id":"859","createdAt":"2024-02-29T06:25:03.764Z"} 
+ </msg>
+<msg time="2024-02-29T13:25:03.796220" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>${base_url}</arg>
+<arg>json=${data}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-02-29T13:25:03.181763" elapsed="0.614514"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${data}[name]</arg>
+<arg>${resp.json()}[name]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-02-29T13:25:03.796972" elapsed="0.001261"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${data}[job]</arg>
+<arg>${resp.json()}[job]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-02-29T13:25:03.798392" elapsed="0.000317"/>
+</kw>
+<status status="PASS" start="2024-02-29T13:25:03.181341" elapsed="0.617476"/>
+</test>
+<test id="s1-t2" name="Missing Request Body Fields" line="15">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-02-29T13:25:04.364782" level="INFO">POST Request : url=https://reqres.in/api/users/ 
+ path_url=/api/users/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-02-29T13:25:04.364966" level="INFO">POST Response : url=https://reqres.in/api/users/ 
+ status=201, reason=Created 
+ headers={'Date': 'Thu, 29 Feb 2024 06:25:04 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '51', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1709187904&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=5u5MiEd1uC6J8rQav550WlMhNu80%2FTRGtONqC%2BIYpaA%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1709187904&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=5u5MiEd1uC6J8rQav550WlMhNu80%2FTRGtONqC%2BIYpaA%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"33-Xzd/wjialD0YVcasqgaLBcT1GyM"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '85ced3f059408994-SIN'} 
+ body={"id":"664","createdAt":"2024-02-29T06:25:04.332Z"} 
+ </msg>
+<msg time="2024-02-29T13:25:04.365267" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>${base_url}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-02-29T13:25:03.799127" elapsed="0.566182"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-02-29T13:25:04.368479" level="INFO">${responseBody} = {'id': '664', 'createdAt': '2024-02-29T06:25:04.332Z'}</msg>
+<var>${responseBody}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.366698" elapsed="0.001926"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2024-02-29T13:25:04.373337" level="INFO">False</msg>
+<arg>${responseBody}</arg>
+<arg>id</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.369685" elapsed="0.003761"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<msg time="2024-02-29T13:25:04.374078" level="INFO">False</msg>
+<arg>${responseBody}</arg>
+<arg>createdAt</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.373786" elapsed="0.000341"/>
+</kw>
+<kw name="Dictionary Should Not Contain Key" owner="Collections">
+<msg time="2024-02-29T13:25:04.374793" level="INFO">False</msg>
+<arg>${responseBody}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is found from ``dictionary``.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.374313" elapsed="0.000534"/>
+</kw>
+<kw name="Dictionary Should Not Contain Key" owner="Collections">
+<msg time="2024-02-29T13:25:04.375239" level="INFO">False</msg>
+<arg>${responseBody}</arg>
+<arg>job</arg>
+<doc>Fails if ``key`` is found from ``dictionary``.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.375038" elapsed="0.000246"/>
+</kw>
+<status status="PASS" start="2024-02-29T13:25:03.798938" elapsed="0.576561"/>
+</test>
+<test id="s1-t3" name="Missing Response" line="23">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-02-29T13:25:04.981599" level="INFO">POST Request : url=https://reqres.in/api/users/ 
+ path_url=/api/users/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '37', 'Content-Type': 'application/json'} 
+ body=b'{"name": "morpheus", "job": "leader"}' 
+ </msg>
+<msg time="2024-02-29T13:25:04.981698" level="INFO">POST Response : url=https://reqres.in/api/users/ 
+ status=201, reason=Created 
+ headers={'Date': 'Thu, 29 Feb 2024 06:25:05 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1709187904&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=5u5MiEd1uC6J8rQav550WlMhNu80%2FTRGtONqC%2BIYpaA%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1709187904&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=5u5MiEd1uC6J8rQav550WlMhNu80%2FTRGtONqC%2BIYpaA%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"54-EoxBlOPrfzu02tJG0zXV8iJfbl8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '85ced3f3eaf044c1-SIN'} 
+ body={"name":"morpheus","job":"leader","id":"175","createdAt":"2024-02-29T06:25:04.908Z"} 
+ </msg>
+<msg time="2024-02-29T13:25:04.981819" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>${base_url}</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.376281" elapsed="0.605555"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-02-29T13:25:04.982564" level="INFO">${responseBody} = {'name': 'morpheus', 'job': 'leader', 'id': '175', 'createdAt': '2024-02-29T06:25:04.908Z'}</msg>
+<var>${responseBody}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.982114" elapsed="0.000468"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<msg time="2024-02-29T13:25:04.982800" level="INFO">Argument types are:
+&lt;class 'dict'&gt;
+&lt;class 'NoneType'&gt;</msg>
+<msg time="2024-02-29T13:25:04.982869" level="FAIL">{'name': 'morpheus', 'job': 'leader', 'id': '175', 'createdAt': '2024-02-29T06:25:04.908Z'} != None</msg>
+<arg>${responseBody}</arg>
+<arg>${NULL}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="FAIL" start="2024-02-29T13:25:04.982694" elapsed="0.000219">{'name': 'morpheus', 'job': 'leader', 'id': '175', 'createdAt': '2024-02-29T06:25:04.908Z'} != None</status>
+</kw>
+<status status="FAIL" start="2024-02-29T13:25:04.375763" elapsed="0.607293">{'name': 'morpheus', 'job': 'leader', 'id': '175', 'createdAt': '2024-02-29T06:25:04.908Z'} != None</status>
+</test>
+<test id="s1-t4" name="Response Not Equals with Request" line="28">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-02-29T13:25:05.591906" level="INFO">POST Request : url=https://reqres.in/api/users/ 
+ path_url=/api/users/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '37', 'Content-Type': 'application/json'} 
+ body=b'{"name": "morpheus", "job": "leader"}' 
+ </msg>
+<msg time="2024-02-29T13:25:05.592199" level="INFO">POST Response : url=https://reqres.in/api/users/ 
+ status=201, reason=Created 
+ headers={'Date': 'Thu, 29 Feb 2024 06:25:05 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1709187905&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=toY9r%2FTWJnm%2Fgn27gx7mp970NXVRiJeSbl8k33FVJsU%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1709187905&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=toY9r%2FTWJnm%2Fgn27gx7mp970NXVRiJeSbl8k33FVJsU%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"54-n3ZAXFb41RfX0dNEvXh0+EH0xGc"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '85ced3f7ea69404d-SIN'} 
+ body={"name":"morpheus","job":"leader","id":"804","createdAt":"2024-02-29T06:25:05.527Z"} 
+ </msg>
+<msg time="2024-02-29T13:25:05.592628" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>${base_url}</arg>
+<arg>json=${data}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-02-29T13:25:04.983409" elapsed="0.609307"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-02-29T13:25:05.595083" level="INFO">${responseBody} = {'name': 'morpheus', 'job': 'leader', 'id': '804', 'createdAt': '2024-02-29T06:25:05.527Z'}</msg>
+<var>${responseBody}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-02-29T13:25:05.593380" elapsed="0.001768"/>
+</kw>
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<msg time="2024-02-29T13:25:05.596158" level="FAIL">morpheus == morpheus</msg>
+<arg>${data}[name]</arg>
+<arg>${responseBody}[name]</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="FAIL" start="2024-02-29T13:25:05.595539" elapsed="0.000763">morpheus == morpheus</status>
+</kw>
+<kw name="Should Not Be Equal" owner="BuiltIn">
+<arg>${data}[job]</arg>
+<arg>${responseBody}[job]</arg>
+<doc>Fails if the given objects are equal.</doc>
+<status status="NOT RUN" start="2024-02-29T13:25:05.596640" elapsed="0.000042"/>
+</kw>
+<status status="FAIL" start="2024-02-29T13:25:04.983203" elapsed="0.613866">morpheus == morpheus</status>
+</test>
+<status status="FAIL" start="2024-02-29T13:25:03.121087" elapsed="2.476922"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="2" skip="0" id="s1" name="Tests">Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

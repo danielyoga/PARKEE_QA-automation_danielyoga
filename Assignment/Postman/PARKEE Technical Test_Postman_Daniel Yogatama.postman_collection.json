@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "4f4f98c9-adfa-4b7c-ac41-06994a38dcbf",
+		"name": "Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11123681",
+		"_collection_link": "https://red-meteor-634769.postman.co/workspace/test_parkee~2675ad76-1525-4722-814e-5a340faefb3a/collection/11123681-4f4f98c9-adfa-4b7c-ac41-06994a38dcbf?action=share&source=collection_link&creator=11123681"
+	},
+	"item": [
+		{
+			"name": "Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response body contains 'name' and 'job' fields with expected values\", function () {",
+							"    const requestBody = JSON.parse(pm.request.body.raw);",
+							"    const responseBody = pm.response.json();",
+							"",
+							"    pm.expect(responseBody).to.have.property('name');",
+							"    pm.expect(responseBody.name).to.equal(requestBody.name);",
+							"",
+							"    pm.expect(responseBody).to.have.property('job');",
+							"    pm.expect(responseBody.job).to.equal(requestBody.job);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"leader\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative Missing Request Body Fields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Missing Request Body Fields\", function () {",
+							"    pm.expect(responseBody).to.include(\"id\");",
+							"    pm.expect(responseBody).to.include(\"createdAt\");",
+							"    pm.expect(responseBody).to.not.have.property('name');",
+							"    pm.expect(responseBody).to.not.have.property('job');",
+							"});",
+							"",
+							"pm.test('Status code is 201', function () {",
+							"    pm.response.to.have.status(201);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative Missing Response",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Missing Response\", function () {",
+							"    pm.expect(pm.response.text()).to.be.null;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"leader\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative Response Not Equals with Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response Not Equals with Request\", function () {",
+							"    const requestBody = JSON.parse(pm.request.body.raw);",
+							"    const responseBody = pm.response.json();",
+							"    pm.expect(responseBody).to.not.include(requestBody);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"leader\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
